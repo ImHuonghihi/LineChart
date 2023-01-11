@@ -2,15 +2,42 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 
 class LineTitles {
+  static var fontsize = 14.0;
+  static var reside = 20.0;
   static getTitleData() => FlTitlesData(
         show: true,
-        bottomTitles: SideTitles(
+        rightTitles: SideTitles(
           showTitles: true,
-          reservedSize: 35,
+          reservedSize: 40,
           getTextStyles: (context, axisValue) => TextStyle(
             color: Color(0xff68737d),
             fontWeight: FontWeight.bold,
-            fontSize: 16,
+            fontSize: fontsize * 80 / 100,
+          ),
+          getTitles: (value) {
+            switch (value.toInt()) {
+              case 2:
+                return 'LOW';
+              case 3:
+                return 'MODERATE';
+              case 6:
+                return 'HIGH';
+              case 9:
+                return 'VERY HIGH';
+              case 11:
+                return 'EXTREME';
+            }
+            return '';
+          },
+          margin: 8,
+        ),
+        bottomTitles: SideTitles(
+          showTitles: true,
+          reservedSize: reside,
+          getTextStyles: (context, axisValue) => TextStyle(
+            color: Color(0xff68737d),
+            fontWeight: FontWeight.bold,
+            fontSize: fontsize,
           ),
           getTitles: (value) {
             switch (value.toInt()) {
@@ -35,10 +62,10 @@ class LineTitles {
         ),
         leftTitles: SideTitles(
           showTitles: true,
-          getTextStyles: (context, axisValue) => const TextStyle(
+          getTextStyles: (context, axisValue) => TextStyle(
             color: Color(0xff67727d),
             fontWeight: FontWeight.bold,
-            fontSize: 15,
+            fontSize: fontsize,
           ),
           getTitles: (value) {
             switch (value.toInt()) {
@@ -61,7 +88,7 @@ class LineTitles {
             }
             return '';
           },
-          reservedSize: 35,
+          reservedSize: reside,
           margin: 12,
         ),
       );

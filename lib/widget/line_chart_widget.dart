@@ -19,12 +19,12 @@ class UVChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) => LineChart(LineChartData(
         minX: 0,
-        maxX: 25,
+        maxX: 23,
         minY: 0,
         maxY: 13,
         titlesData: LineTitles.getTitleData(),
         gridData: FlGridData(
-          show: true,
+          show: false,
           getDrawingHorizontalLine: (value) {
             return FlLine(
               color: const Color(0xff37434d),
