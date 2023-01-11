@@ -14,12 +14,20 @@ class LineTitles {
           ),
           getTitles: (value) {
             switch (value.toInt()) {
-              case 2:
-                return 'MAR';
-              case 5:
-                return 'JUN';
+              case 0:
+                return '0h';
+              case 4:
+                return '4H';
               case 8:
-                return 'SEP';
+                return '8H';
+              case 12:
+                return '12H';
+              case 16:
+                return '16H';
+              case 20:
+                return '20';
+              case 23:
+                return '23H';
             }
             return '';
           },
@@ -34,12 +42,22 @@ class LineTitles {
           ),
           getTitles: (value) {
             switch (value.toInt()) {
+              case 0:
+                return '0.0';
               case 1:
-                return '10k';
+                return '1.0';
               case 3:
-                return '30k';
+                return '3.0';
               case 5:
-                return '50k';
+                return '5.0';
+              case 7:
+                return '7.0';
+              case 9:
+                return '9.0';
+              case 11:
+                return '11.0';
+              case 12:
+                return '11+';
             }
             return '';
           },

@@ -1,16 +1,28 @@
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
+import 'package:linechart/widget/line_titles.dart';
 
-class LineChartWidget extends StatelessWidget {
-  final List<Color> gradientColors = [Colors.orange[400]!, Color.fromARGB(255, 128, 255, 139)!];
+class UVChart extends StatelessWidget {
+  final List<Color> gradientColors = [
+    Colors.purple,
+    Colors.red,
+    Colors.orange,
+    Colors.yellow,
+    Colors.green
+  ];
+
+  final List<double> uvData;
+
+  UVChart({super.key, required this.uvData});
 
   @override
   Widget build(BuildContext context) => LineChart(LineChartData(
         minX: 0,
-        maxX: 20,
+        maxX: 25,
         minY: 0,
-        maxY: 6,
+        maxY: 13,
+        titlesData: LineTitles.getTitleData(),
         gridData: FlGridData(
           show: true,
           getDrawingHorizontalLine: (value) {
@@ -34,26 +46,30 @@ class LineChartWidget extends StatelessWidget {
         lineBarsData: [
           LineChartBarData(
             spots: [
-              FlSpot(0, 3),
-              FlSpot(4, 2),
-              FlSpot(8, 5),
-              FlSpot(12, 3.1),
-              FlSpot(16, 4),
-              FlSpot(23, 3),
+              FlSpot(0, uvData[0]),
+              FlSpot(4, uvData[1]),
+              FlSpot(8, uvData[2]),
+              FlSpot(12, uvData[3]),
+              FlSpot(16, uvData[4]),
+              FlSpot(23, uvData[5]),
             ],
             isCurved: true,
             colors: gradientColors,
             barWidth: 5,
             isStrokeCapRound: true,
-            // dotData: FlDotData(
-            //   show: false,
-            // ),
+            dotData: FlDotData(
+              show: false,
+            ),
             belowBarData: BarAreaData(
               show: true,
               colors: gradientColors
                   .map((color) => color.withOpacity(0.9))
                   .toList(),
+              gradientFrom: Offset(0.5, 0),
+              gradientTo: Offset(0.5, 1),
             ),
+            gradientFrom: Offset(0.5, 0),
+            gradientTo: Offset(0.5, 1),
           ),
         ],
       ));
